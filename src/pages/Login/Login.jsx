@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
 	const { signIn } = useContext(AuthContext);
 	const [showPass, setShowPass] = useState(false);
+	const navigate = useNavigate();
+	const location = useLocation();
+	console.log(location);
+	const from = location.state?.from?.pathname || '/category/0'
 
 	const handleLogin = (e) => {
 		e.preventDefault();
@@ -18,6 +22,7 @@ const Login = () => {
 			.then((res) => {
 				const loggedUser = res.user;
 				console.log(loggedUser);
+				navigate(from, { replace: true });
 			})
 			.catch((err) => console.log(err));
 	};
