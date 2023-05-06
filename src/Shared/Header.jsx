@@ -3,12 +3,16 @@ import logo from "../assets/logo.png";
 import moment from "moment";
 import { Button, Container } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+
 	return (
 		<Container className="mt-4">
 			<div className="text-center">
-				<img src={logo} alt="" />
+				<Link to="/category/0">
+					<img src={logo} alt="" />
+				</Link>
 				<p className="text-secondary">
 					<small>Journalism Without Fear or Favor</small>
 				</p>
@@ -29,7 +33,6 @@ const Header = () => {
 					</div>
 				</Marquee>
 			</div>
-			
 		</Container>
 	);
 };

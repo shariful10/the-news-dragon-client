@@ -3,11 +3,13 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useTitle from "../../../hooks/useTitle";
 
 const Register = () => {
 	const { createUser } = useContext(AuthContext);
 	const [showPass, setShowPass] = useState(false);
 	const [accepted, setAccepted] = useState(false);
+	useTitle('Registration');
 
 	const handleRegister = (e) => {
 		e.preventDefault();

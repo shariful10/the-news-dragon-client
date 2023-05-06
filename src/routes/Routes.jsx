@@ -1,6 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Home from "../pages/Home/Home";
 import Category from "../pages/Category/Category";
 import NewsLayout from "../layout/NewsLayout";
 import News from "../pages/News/News";
@@ -28,9 +27,9 @@ const router = createBrowserRouter([
 				element: <Register />,
 			},
 			{
-				path: 'terms',
-				element: <Terms />
-			}
+				path: "terms",
+				element: <Terms />,
+			},
 		],
 	},
 	{
@@ -40,7 +39,10 @@ const router = createBrowserRouter([
 			{
 				path: ":id",
 				element: <Category />,
-				loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`),
+				loader: ({ params }) =>
+					fetch(
+						`https://the-news-dragon-server-shariful10.vercel.app/category/${params.id}`
+					),
 			},
 		],
 	},
@@ -55,7 +57,8 @@ const router = createBrowserRouter([
 						<News />
 					</PrivateRoute>
 				),
-				loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`),
+				loader: ({ params }) =>
+					fetch(`https://the-news-dragon-server-shariful10.vercel.app/news/${params.id}`),
 			},
 		],
 	},
